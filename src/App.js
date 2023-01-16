@@ -41,7 +41,7 @@ const App = () => {
     <Routes>
       <Route path="/home" element={<Home />} />
 
-      <Route path='/login'
+      <Route path='/'
         element={
           <Form
             title="Login"

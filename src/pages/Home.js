@@ -6,7 +6,7 @@ import icon from "../images/location-icon.png"
 const Home = () => {
     const handleLogout = () => {
         sessionStorage.removeItem('Auth Token');
-        navigate('/login')
+        navigate('/')
     }
     let navigate = useNavigate();
     useEffect(() => {
@@ -17,14 +17,9 @@ const Home = () => {
         }
 
         if (!authToken) {
-            navigate('/login')
+            navigate('/')
         }
     }, [])
-
-    const register = () => {
-        let path = "./register";
-        navigate(path);
-    }
 
     return (
         <div className="App">
@@ -37,9 +32,6 @@ const Home = () => {
                 </p>
             </header>
             <div id="chatting"><p id="location"><img id="location-icon" src={icon} alt="location-icon" /></p></div>
-            <button onClick={register}>
-                Register
-            </button>
         </div>
 
     );

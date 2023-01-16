@@ -14,7 +14,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
         navigate(path);
     }
     const login = () => {
-        let path = "../login";
+        let path = "../";
         navigate(path);
     }
 
@@ -35,7 +35,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                 </h2>
             </div>
             <div>
-                <img id="login-photo" src={photo} />
+                <img id="login-photo" src={photo} alt="login-page" />
             </div>
             <div className="Login-items">
                 <h3 id="login-title">
