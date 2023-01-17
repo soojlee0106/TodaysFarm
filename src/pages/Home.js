@@ -65,7 +65,12 @@ const Home = () => {
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <div id="chatting"><p id="location"><img id="location-icon" src={icon} alt="location-icon" /></p></div>
+            <div id="chatting">
+                <div id="location">
+                    <input id="location-input" type="text" placeholder="주변 구매자 찾기..." />
+                    <img id="location-icon" src={icon} alt="location-icon" />
+                </div>
+            </div>
         </div>
 
     );
