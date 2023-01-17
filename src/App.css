@@ -32,6 +32,11 @@
   color: #61dafb;
 }
 
+.Top-picks {
+  padding-left: 20vh;
+  color: #315C3B;
+}
+
 .Login-items {
   margin-top: 5%;
   margin-left: 60%;
@@ -39,6 +44,18 @@
   z-index: 1;
   position: relative;
   overflow: hidden;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Carousel-items {
+  padding-left: 18vh;
+  width: 50%;
+  height: 50%;
 }
 
 #login-photo {
@@ -96,7 +113,6 @@
   cursor: pointer;
 }
 
-
 #photo-icon {
   border-radius: 7vh;
   background: #FFFFFF;
@@ -140,11 +156,14 @@
   margin-left: 15%;
 }
 
-.login-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#carousel-left {
+  border-radius: 5vh 0vh 0vh 5vh;
 }
+
+#carousel-right {
+  border-radius: 0vh 5vh 5vh 0vh;
+}
+
 
 
 @keyframes App-logo-spin {
