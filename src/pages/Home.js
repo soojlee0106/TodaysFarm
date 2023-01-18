@@ -40,7 +40,7 @@ const Home = () => {
             </header>
             <div className="Top-picks">
                 <h2>
-                    Top Picks
+                    Top Picks for you
                 </h2>
             </div>
             <div className="Carousel-items">

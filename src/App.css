@@ -140,15 +140,16 @@
   width: 3vh;
   height: 3vh;
   margin-left: 5%;
-  margin-top: 3%;
+  margin-top: 5%;
   z-index: 3;
   position: absolute;
 }
 
 #location-input {
   margin-left: 15%;
-  margin-top: 3%;
+  margin-top: 5%;
   z-index: 2;
+  width: 70%;
   position: absolute;
   background: transparent;
   border: none;
