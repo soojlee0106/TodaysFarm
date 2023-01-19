@@ -168,11 +168,14 @@
   position: absolute;
   color: #EFFFCD;
   border-bottom: #EFFFCD;
+  padding: 0;
   border: none;
   background: none;
-  margin-left: 85%;
-  margin-top: 4%;
-  text-align: center;
+  display: flex;
+  margin-left: 87%;
+  margin-top: 35px;
+  cursor: pointer;
+  font-size: 2.5vh;
   opacity: 0.6;
 }
 
@@ -183,8 +186,8 @@
   border-bottom: #EFFFCD;
   border: none;
   background: none;
-  margin-left: 86%;
-  margin-top: 6%;
+  margin-left: 40vh;
+  margin-top: 14vh;
   text-align: center;
   font-size: 60px;
   opacity: 0.6;
