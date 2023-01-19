@@ -1,5 +1,5 @@
 import '../App.css';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Profiler } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import icon from "../images/location-icon.png"
@@ -24,8 +24,14 @@ const Home = () => {
     }
     const [weather, setWeather] = useState(null);
     const [location, setLocation] = useState(null);
-    const [file, setFile] = useState("");
+    const [file, setFile] = useState("")
     const [percent, setPercent] = useState(0);
+    var [imgUrl, setImgUrl] = useState(null);
+
+    imgUrl = "https://firebasestorage.googleapis.com/v0/b/react-register-a81d5.appspot.com/o/files%2Fprofile.png?alt=media&token=4f66f29a-a54e-40b7-a67b-e1ca95a36cc3";
+    const storageRef = ref(storage, `/files/profile.png`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
     let navigate = useNavigate();
 
     function handleChange(event) {
@@ -36,9 +42,6 @@ const Home = () => {
         if (!file) {
             alert("Please choose a file first!")
         }
-
-        const storageRef = ref(storage, `/files/${file.name}`)
-        const uploadTask = uploadBytesResumable(storageRef, file);
 
         uploadTask.on(
             "state_changed",
@@ -53,8 +56,8 @@ const Home = () => {
             (err) => console.log(err),
             () => {
                 // download url
-                getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                    console.log(url);
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    setImgUrl(downloadURL)
                 });
             }
         );
@@ -108,6 +111,9 @@ const Home = () => {
                 <button onClick={handleUpload}>Upload to Firebase</button>
                 <p>{percent} "% done"</p>
             </div>
+
+            <img src={imgUrl} alt='uploaded file' height={200} />
+
             <div className="Top-picks">
                 <h2>
                     Top Picks for you
