@@ -1,6 +1,7 @@
 import '../App.css';
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import icon from "../images/location-icon.png"
 import carousel_1 from "../images/carousel_1.jpg"
 import carousel_2 from "../images/carousel_2.jpg"
@@ -9,8 +10,12 @@ import carousel_4 from "../images/carousel_4.jpg"
 import carousel_5 from "../images/carousel_5.jpg"
 import carousel_6 from "../images/carousel_6.jpg"
 import Carousel from 'better-react-carousel'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faCloud } from '@fortawesome/free-solid-svg-icons'
+
+import { storage } from "../firebase"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const Home = () => {
     const handleLogout = () => {
@@ -19,7 +24,41 @@ const Home = () => {
     }
     const [weather, setWeather] = useState(null);
     const [location, setLocation] = useState(null);
+    const [file, setFile] = useState("");
+    const [percent, setPercent] = useState(0);
     let navigate = useNavigate();
+
+    function handleChange(event) {
+        setFile(event.target.files[0]);
+    }
+
+    function handleUpload() {
+        if (!file) {
+            alert("Please choose a file first!")
+        }
+
+        const storageRef = ref(storage, `/files/${file.name}`)
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const percent = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+
+                // update progress
+                setPercent(percent);
+            },
+            (err) => console.log(err),
+            () => {
+                // download url
+                getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                    console.log(url);
+                });
+            }
+        );
+    }
 
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
@@ -64,6 +103,11 @@ const Home = () => {
                     Farm
                 </p>
             </header>
+            <div>
+                <input type="file" onChange={handleChange} accept="" />
+                <button onClick={handleUpload}>Upload to Firebase</button>
+                <p>{percent} "% done"</p>
+            </div>
             <div className="Top-picks">
                 <h2>
                     Top Picks for you
