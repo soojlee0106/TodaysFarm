@@ -144,11 +144,12 @@
   margin-top: 14vh;
   z-index: 2;
   position: absolute;
+  font-size: 13px;
 }
 
 #file-button1 {
   display: inline-block;
-  color: #999;
+  color: #a4a4a4;
   font-size: inherit;
   line-height: normal;
   vertical-align: middle;
@@ -156,12 +157,24 @@
   border: none !important;
 }
 
+input[type=file]::file-selector-button {
+  width: 80px;
+  height: 30px;
+  background: #ededed;
+  border: 1px solid rgb(77, 77, 77);
+  border-radius: 10px;
+  cursor: pointer;
+  border: none !important;
+  font-size: 13px;
+}
+
 
 #file-button2 {
-  padding: 4px;
+  padding: 6px;
   border: none;
   border-radius: 7px;
   cursor: pointer;
+  font-size: 12px;
 }
 
 #chatting {
@@ -247,7 +260,6 @@
   font-size: 20px;
   opacity: 0.8;
 }
-
 
 @keyframes App-logo-spin {
   from {
