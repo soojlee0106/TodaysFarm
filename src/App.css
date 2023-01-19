@@ -163,6 +163,32 @@
   border-radius: 0vh 5vh 5vh 0vh;
 }
 
+#weather-text {
+  z-index: 2;
+  position: absolute;
+  color: #EFFFCD;
+  border-bottom: #EFFFCD;
+  border: none;
+  background: none;
+  margin-left: 85%;
+  margin-top: 4%;
+  text-align: center;
+  opacity: 0.6;
+}
+
+#weather-icon {
+  z-index: 2;
+  position: absolute;
+  color: #EFFFCD;
+  border-bottom: #EFFFCD;
+  border: none;
+  background: none;
+  margin-left: 86%;
+  margin-top: 6%;
+  text-align: center;
+  font-size: 60px;
+  opacity: 0.6;
+}
 
 
 @keyframes App-logo-spin {
