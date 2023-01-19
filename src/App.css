@@ -120,11 +120,48 @@
   background: #FFFFFF;
   width: 25vh;
   height: 25vh;
-  margin-left: 65%;
+  margin-left: 70%;
   margin-top: 20vh;
   z-index: 2;
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+#photo-img {
+  border-radius: 5vh;
+  background: #FFFFFF;
+  width: 20vh;
+  height: 20vh;
+  margin-left: 10%;
+  margin-top: 10%;
+  z-index: 2;
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+#choose-file {
+  margin-left: 73.5%;
+  margin-top: 14vh;
+  z-index: 2;
+  position: absolute;
+}
+
+#file-button1 {
+  display: inline-block;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none !important;
+}
+
+
+#file-button2 {
+  padding: 4px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
 }
 
 #chatting {

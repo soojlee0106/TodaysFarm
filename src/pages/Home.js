@@ -1,5 +1,5 @@
 import '../App.css';
-import React, { useState, useEffect, Profiler } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import icon from "../images/location-icon.png"
@@ -10,6 +10,7 @@ import carousel_4 from "../images/carousel_4.jpg"
 import carousel_5 from "../images/carousel_5.jpg"
 import carousel_6 from "../images/carousel_6.jpg"
 import Carousel from 'better-react-carousel'
+import image_profile from "../images/profile_img.png"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faCloud } from '@fortawesome/free-solid-svg-icons'
@@ -26,9 +27,10 @@ const Home = () => {
     const [location, setLocation] = useState(null);
     const [file, setFile] = useState("")
     const [percent, setPercent] = useState(0);
-    var [imgUrl, setImgUrl] = useState(null);
+    var [imgUrl, setImgUrl] = useState("");
 
-    imgUrl = "https://firebasestorage.googleapis.com/v0/b/react-register-a81d5.appspot.com/o/files%2Fprofile.png?alt=media&token=4f66f29a-a54e-40b7-a67b-e1ca95a36cc3";
+    imgUrl = "https://firebasestorage.googleapis.com/v0/b/react-register-a81d5.appspot.com/o/files%2Fprofile.png?alt=media&token=5ad8bfbc-9fc3-4fa9-b047-bab81b534f67"
+
     const storageRef = ref(storage, `/files/profile.png`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -58,9 +60,12 @@ const Home = () => {
                 // download url
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     setImgUrl(downloadURL)
-                });
+                })
             }
         );
+        setTimeout(function () {
+            window.location.reload();
+        }, 2000);
     }
 
     useEffect(() => {
@@ -89,10 +94,15 @@ const Home = () => {
     return (
         <div className="App">
             <button id="logout-button" onClick={handleLogout}>Log out</button>
-            <p id="photo-icon"></p>
+
+            <p id="photo-icon">
+                <img src={imgUrl} alt='uploaded file' id="photo-img" />
+            </p>
+
             <div id="weather-text">
                 {location}<br></br>
             </div>
+
             <div id="weather-icon">
                 {weather === 'Clear' ? (
                     <FontAwesomeIcon icon={faSun} />
@@ -100,25 +110,26 @@ const Home = () => {
                     <FontAwesomeIcon icon={faCloud} />
                 )}
             </div>
+
             <header className="App-header">
                 <p>
                     Today's <br></br>
                     Farm
                 </p>
             </header>
-            <div>
-                <input type="file" onChange={handleChange} accept="" />
-                <button onClick={handleUpload}>Upload to Firebase</button>
-                <p>{percent} "% done"</p>
-            </div>
 
-            <img src={imgUrl} alt='uploaded file' height={200} />
+            <div id="choose-file">
+                <input type="file" onChange={handleChange} accept="" id="file-button1" />
+                <br></br>
+                <button onClick={handleUpload} id="file-button2"> 프로필 바꾸기 </button>
+            </div>
 
             <div className="Top-picks">
                 <h2>
                     Top Picks for you
                 </h2>
             </div>
+
             <div className="Carousel-items">
                 <Carousel cols={3} rows={1} gap={10} loop>
                     <Carousel.Item>
@@ -141,11 +152,13 @@ const Home = () => {
                     </Carousel.Item>
                 </Carousel>
             </div>
+
             <div id="chatting">
                 <input id="location-input" type="text" placeholder="주변 구매자 찾기..." />
                 <img id="location-icon" src={icon} alt="location-icon" />
             </div>
-        </div>
+
+        </div >
 
     );
 };
