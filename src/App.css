@@ -234,6 +234,20 @@
   opacity: 0.6;
 }
 
+#weather-numb {
+  z-index: 2;
+  position: absolute;
+  color: #EFFFCD;
+  border-bottom: #EFFFCD;
+  border: none;
+  background: none;
+  margin-left: 43vh;
+  margin-top: 19vh;
+  text-align: center;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
 
 @keyframes App-logo-spin {
   from {

@@ -25,9 +25,11 @@ const Home = () => {
     }
     const [weather, setWeather] = useState(null);
     const [location, setLocation] = useState(null);
+    const [temp, setTemp] = useState(null);
     const [file, setFile] = useState("")
     const [percent, setPercent] = useState(0);
     var [imgUrl, setImgUrl] = useState("");
+    const kelvin = 273;
 
     imgUrl = "https://firebasestorage.googleapis.com/v0/b/react-register-a81d5.appspot.com/o/files%2Fprofile.png?alt=media&token=5ad8bfbc-9fc3-4fa9-b047-bab81b534f67"
 
@@ -87,6 +89,7 @@ const Home = () => {
             const data = await response.json();
             setWeather(data.weather[0].main);
             setLocation(data.name);
+            setTemp(Math.floor(data.main.temp - kelvin) + "°C");
         });
 
     }, [])
@@ -109,6 +112,10 @@ const Home = () => {
                 ) : (
                     <FontAwesomeIcon icon={faCloud} />
                 )}
+            </div>
+
+            <div id="weather-numb">
+                {temp}
             </div>
 
             <header className="App-header">
