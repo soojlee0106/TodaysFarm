@@ -323,3 +323,16 @@ input[type=file]::file-selector-button {
 .rcw-client .rcw-message-text {
   background-color: #c7e9afad !important;
 }
+
+.layout {
+  padding-left: 70%;
+  padding-top: 27%;
+  width: 15%;
+  height: 15%;
+  z-index: 3;
+  position: absolute;
+}
+
+.slide {
+  display: none !important;
+}

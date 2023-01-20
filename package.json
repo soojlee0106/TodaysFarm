@@ -20,6 +20,7 @@
     "react-bootstrap": "^2.7.0",
     "react-chat-widget": "^3.1.4",
     "react-dom": "^18.2.0",
+    "react-js-pie-chart": "^1.0.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",

@@ -20,6 +20,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import { Widget, addResponseMessage } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
+import PieChart from "react-js-pie-chart";
 
 const Home = () => {
     const handleLogout = () => {
@@ -32,6 +33,13 @@ const Home = () => {
     const [file, setFile] = useState("")
     var [imgUrl, setImgUrl] = useState("");
     const [chatWindowOpen, setChatWindowOpen] = useState(true);
+    const data = [
+        { value: 12, name: "Data Point" },
+        { value: 24, name: "Another Data Point" },
+        { value: 67, name: "Data Point 3" },
+        { value: 18, name: "Yet Another Point" },
+        { value: 37, name: "A Fifth Data Point" },
+    ];
 
     const kelvin = 273;
 
@@ -115,6 +123,15 @@ const Home = () => {
                 </div>
             </p>
 
+            <PieChart
+                data={data}
+                width={300}
+                height={300}
+                thickness={70}
+                colors={["#248ec2", "#1b67d3", "#1d35e2", "rgb(0, 0, 100)", "#000000"]}
+                animation={true}
+            />
+
             <div id="weather-text">
                 {location}<br></br>
             </div>
@@ -182,6 +199,8 @@ const Home = () => {
                 <input id="location-input" type="text" placeholder="주변 구매자 찾기..." />
                 <img id="location-icon" src={icon} alt="location-icon" />
             </div>
+
+
 
         </div >
 
