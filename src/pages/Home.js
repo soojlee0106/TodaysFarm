@@ -108,6 +108,11 @@ const Home = () => {
 
             <p id="photo-icon">
                 <img src={imgUrl} alt='uploaded file' id="photo-img" />
+                <div id="choose-file">
+                    <input type="file" onChange={handleChange} accept="" id="file-button1" />
+                    <br></br>
+                    <button onClick={handleUpload} id="file-button2"> 프로필 바꾸기 </button>
+                </div>
             </p>
 
             <div id="weather-text">
@@ -132,12 +137,6 @@ const Home = () => {
                     Farm
                 </p>
             </header>
-
-            <div id="choose-file">
-                <input type="file" onChange={handleChange} accept="" id="file-button1" />
-                <br></br>
-                <button onClick={handleUpload} id="file-button2"> 프로필 바꾸기 </button>
-            </div>
 
             <div className="Top-picks">
                 <h2>
