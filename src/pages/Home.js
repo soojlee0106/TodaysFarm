@@ -122,15 +122,20 @@ const Home = () => {
                     <button onClick={handleUpload} id="file-button2"> 프로필 바꾸기 </button>
                 </div>
             </p>
-
+            <div id="rating">
+                70%
+                <div id="rating-small">
+                    Fresh
+                </div>
+            </div>
             <PieChart
                 data={data}
                 width={300}
                 height={300}
                 thickness={70}
-                colors={["#248ec2", "#1b67d3", "#1d35e2", "rgb(0, 0, 100)", "#000000"]}
-                animation={true}
-            />
+                colors={["#bddb9c", "#a2d16f", "#86bd4b", "#6fa832", "#49800f"]}
+                animation={true}>
+            </PieChart>
 
             <div id="weather-text">
                 {location}<br></br>

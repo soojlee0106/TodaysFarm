@@ -3,6 +3,7 @@
   min-height: 110vh;
   z-index: 1;
   position: relative;
+  overflow: hidden;
 }
 
 *:focus {
@@ -310,6 +311,7 @@ input[type=file]::file-selector-button {
 .rcw-conversation-container .rcw-header {
   background-color: #94C973 !important;
   font: stretch 1px;
+  padding: 5px;
 }
 
 .rcw-message>.rcw-response {
@@ -326,11 +328,39 @@ input[type=file]::file-selector-button {
 
 .layout {
   padding-left: 70%;
-  padding-top: 27%;
+  padding-top: 350px;
   width: 15%;
   height: 15%;
   z-index: 3;
   position: absolute;
+}
+
+#rating {
+  z-index: 4;
+  position: absolute;
+  padding-left: 70%;
+  padding-top: 370px;
+  width: 15%;
+  height: 15%;
+  font-weight: 600;
+  font-size: 5vh;
+  color: white;
+  text-shadow: 2px 2px 6px #b1b6a8;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#rating-small {
+  z-index: 4;
+  position: absolute;
+  padding-left: 1.5%;
+  width: 15%;
+  height: 15%;
+  font-weight: 600;
+  font-size: 2.5vh;
+  color: white;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .slide {
