@@ -138,7 +138,7 @@ const Home = () => {
             </div>
 
             <div className="Carousel-items">
-                <Carousel cols={3} rows={1} gap={10} loop>
+                <Carousel cols={3} rows={1} gap={10} loop={true} autoplay={4500}>
                     <Carousel.Item>
                         <img id="carousel-left" width="100%" src={carousel_1} alt="c1" />
                     </Carousel.Item>
