@@ -18,6 +18,9 @@ import { faSun, faCloud } from '@fortawesome/free-solid-svg-icons'
 import { storage } from "../firebase"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import { Widget, addResponseMessage } from 'react-chat-widget';
+import 'react-chat-widget/lib/styles.css';
+
 const Home = () => {
     const handleLogout = () => {
         sessionStorage.removeItem('Auth Token');
@@ -27,8 +30,9 @@ const Home = () => {
     const [location, setLocation] = useState(null);
     const [temp, setTemp] = useState(null);
     const [file, setFile] = useState("")
-    const [percent, setPercent] = useState(0);
     var [imgUrl, setImgUrl] = useState("");
+    const [chatWindowOpen, setChatWindowOpen] = useState(true);
+
     const kelvin = 273;
 
     imgUrl = "https://firebasestorage.googleapis.com/v0/b/react-register-a81d5.appspot.com/o/files%2Fprofile.png?alt=media&token=5ad8bfbc-9fc3-4fa9-b047-bab81b534f67"
@@ -37,6 +41,14 @@ const Home = () => {
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     let navigate = useNavigate();
+
+    const handleNewUserMessage = (newMessage) => {
+        addResponseMessage("네, 구입하고 싶습니다" + newMessage);
+    };
+
+    const handleToggle = (chatWindowOpen) => {
+        setChatWindowOpen(!chatWindowOpen);
+    };
 
     function handleChange(event) {
         setFile(event.target.files[0]);
@@ -50,12 +62,6 @@ const Home = () => {
         uploadTask.on(
             "state_changed",
             (snapshot) => {
-                const percent = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-
-                // update progress
-                setPercent(percent);
             },
             (err) => console.log(err),
             () => {
@@ -71,6 +77,8 @@ const Home = () => {
     }
 
     useEffect(() => {
+        addResponseMessage('토마토 구입하고 싶습니다~');
+
         let authToken = sessionStorage.getItem('Auth Token')
 
         if (authToken) {
@@ -159,6 +167,17 @@ const Home = () => {
                     </Carousel.Item>
                 </Carousel>
             </div>
+
+            <Widget
+                handleNewUserMessage={handleNewUserMessage}
+                handleToggle={handleToggle}
+                title="구매자와 채팅"
+                subtitle="@tomatobuyer"
+                emojis="false"
+                profileAvatar={image_profile}
+                chatId="@tomatobuyer"
+                senderPlaceHolder="이모티콘 보내기"
+            />
 
             <div id="chatting">
                 <input id="location-input" type="text" placeholder="주변 구매자 찾기..." />

@@ -307,3 +307,20 @@ input[type=file]::file-selector-button {
     transform: rotate(360deg);
   }
 }
+
+.rcw-conversation-container .rcw-header {
+  background-color: #94C973 !important;
+  font: stretch 1px;
+}
+
+.rcw-message>.rcw-response {
+  color: #315C3B;
+}
+
+.rcw-launcher {
+  background-color: #94C973 !important;
+}
+
+.rcw-client .rcw-message-text {
+  background-color: #c7e9afad !important;
+}
