@@ -11,12 +11,10 @@ import carousel_5 from "../images/carousel_5.jpg"
 import carousel_6 from "../images/carousel_6.jpg"
 import Carousel from 'better-react-carousel'
 import image_profile from "../images/profile_img.png"
+import chat_profile from "../images/tomato_buyer.jpg"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faCloud } from '@fortawesome/free-solid-svg-icons'
-
-import { storage } from "../firebase"
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import { Widget, addResponseMessage } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
@@ -30,8 +28,6 @@ const Home = () => {
     const [weather, setWeather] = useState(null);
     const [location, setLocation] = useState(null);
     const [temp, setTemp] = useState(null);
-    const [file, setFile] = useState("")
-    var [imgUrl, setImgUrl] = useState("");
     const [chatWindowOpen, setChatWindowOpen] = useState(true);
     const data = [
         { value: 12, name: "Data Point" },
@@ -43,11 +39,6 @@ const Home = () => {
 
     const kelvin = 273;
 
-    imgUrl = "https://firebasestorage.googleapis.com/v0/b/react-register-a81d5.appspot.com/o/files%2Fprofile.png?alt=media&token=5ad8bfbc-9fc3-4fa9-b047-bab81b534f67"
-
-    const storageRef = ref(storage, `/files/profile.png`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
     let navigate = useNavigate();
 
     const handleNewUserMessage = (newMessage) => {
@@ -57,32 +48,6 @@ const Home = () => {
     const handleToggle = (chatWindowOpen) => {
         setChatWindowOpen(!chatWindowOpen);
     };
-
-    function handleChange(event) {
-        setFile(event.target.files[0]);
-    }
-
-    function handleUpload() {
-        if (!file) {
-            alert("Please choose a file first!")
-        }
-
-        uploadTask.on(
-            "state_changed",
-            (snapshot) => {
-            },
-            (err) => console.log(err),
-            () => {
-                // download url
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    setImgUrl(downloadURL)
-                })
-            }
-        );
-        setTimeout(function () {
-            window.location.reload();
-        }, 2000);
-    }
 
     useEffect(() => {
         addResponseMessage('토마토 구입하고 싶습니다~');
@@ -112,15 +77,10 @@ const Home = () => {
 
     return (
         <div className="App">
-            <button id="logout-button" onClick={handleLogout}>Log out</button>
+            <button id="logout-button" onClick={handleLogout}> Log out <br></br> {location}</button>
 
             <p id="photo-icon">
-                <img src={imgUrl} alt='uploaded file' id="photo-img" />
-                <div id="choose-file">
-                    <input type="file" onChange={handleChange} accept="" id="file-button1" />
-                    <br></br>
-                    <button onClick={handleUpload} id="file-button2"> 프로필 바꾸기 </button>
-                </div>
+                <img src={image_profile} alt='uploaded file' id="photo-img" />
             </p>
             <div id="rating">
                 70%
@@ -138,10 +98,6 @@ const Home = () => {
                 colors={["#bddb9c", "#a2d16f", "#86bd4b", "#6fa832", "#49800f"]}
                 animation={true}>
             </PieChart>
-
-            <div id="weather-text">
-                {location}<br></br>
-            </div>
 
             <div id="weather-icon">
                 {weather === 'Clear' ? (
@@ -164,7 +120,7 @@ const Home = () => {
 
             <div className="Top-picks">
                 <h2>
-                    Top Picks for you
+                    실시간 인기 유저
                 </h2>
             </div>
 
@@ -197,7 +153,7 @@ const Home = () => {
                 title="구매자와 채팅"
                 subtitle="@tomatobuyer"
                 emojis="false"
-                profileAvatar={image_profile}
+                profileAvatar={chat_profile}
                 chatId="@tomatobuyer"
                 senderPlaceHolder="전송 후 창 닫기"
             />
