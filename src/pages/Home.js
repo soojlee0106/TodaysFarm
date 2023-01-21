@@ -51,7 +51,7 @@ const Home = () => {
     let navigate = useNavigate();
 
     const handleNewUserMessage = (newMessage) => {
-        addResponseMessage("네, 구입하고 싶습니다" + newMessage);
+        addResponseMessage("네, 구입하고 싶습니다");
     };
 
     const handleToggle = (chatWindowOpen) => {
@@ -128,6 +128,8 @@ const Home = () => {
                     Fresh
                 </div>
             </div>
+            <div id="rating-box"></div>
+
             <PieChart
                 data={data}
                 width={300}
@@ -197,7 +199,7 @@ const Home = () => {
                 emojis="false"
                 profileAvatar={image_profile}
                 chatId="@tomatobuyer"
-                senderPlaceHolder="이모티콘 보내기"
+                senderPlaceHolder="전송 후 창 닫기"
             />
 
             <div id="chatting">
